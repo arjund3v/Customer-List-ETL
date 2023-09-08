@@ -46,4 +46,23 @@ df["Do_Not_Contact"] = df["Do_Not_Contact"].str.replace('No', 'N')
 df = df.replace('N/a', '')
 df = df.fillna('')
 
+# Dropping useless rows that we can not call
+for x in df.index:
+    if df.loc[x, "Do_Not_Contact"] == 'Y':
+        df.drop(x, inplace=True)
+
+# No phone number rows get dropped
+for x in df.index:
+    if df.loc[x, "Phone_Number"] == '':
+        df.drop(x, inplace=True)
+
+# Reset the index of the dataframe
+df = df.reset_index(drop=True)
+
+# Drop th address column since we split it up prior to this
+df = df.drop("Address", axis=1)
+
+# Sort the Dataframe by the first name
+df = df.sort_values(by="First_Name")
+
 print(df)
