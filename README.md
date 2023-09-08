@@ -1,12 +1,12 @@
-# Customer List ETL
-Basic demonstration of ETL process using the Panda's library in Python. 
+<h1 align="center">Customer List ETL Pipeline</h1>
+<p align="center">A demonstration of the ETL process using the Panda's library in Python, recreating a real life scenario </p>
 
-# Scenario
+## Scenario
 The scenario in mind was a representative from the company reached out to the data engineering team to get a list of customers who needed to be called about changes to the company which effected them.
 
 Unfortunately, the data was inconsistent and had some discrepancies. 
 
-I, a senior data engineer of this comapny was tasked with cleaning the data and providing a easy to read, useable list which can be used to call the customers.
+I, a data engineering intern of said comapny was tasked with cleaning the data and providing a easy to read, useable list which can be used to call the customers.
 
 ## Usage
 1. Download/Clone the repository
