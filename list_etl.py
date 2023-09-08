@@ -23,20 +23,23 @@ def transform_data(df):
     df["Last_Name"] = df["Last_Name"].str.strip('.../_')
 
     # Getting rid of any slashes, dashes, or underscores in the phone numbers
-    df['Phone_Number'] = df['Phone_Number'].str.replace('[^a-zA-Z0-9]', '', regex=True)
+    df['Phone_Number'] = df['Phone_Number'].str.replace(
+        '[^a-zA-Z0-9]', '', regex=True)
 
     # First convert the entire column to strings using a lambda function
     df["Phone_Number"] = df["Phone_Number"].apply(lambda x: str(x))
 
     # Standardizing the phone numbers
-    df["Phone_Number"] = df["Phone_Number"].apply(lambda x: x[0:3] + '-' + x[3:6] + '-' + x[6:10])
+    df["Phone_Number"] = df["Phone_Number"].apply(
+        lambda x: x[0:3] + '-' + x[3:6] + '-' + x[6:10])
 
     # Clears out any numbers that have Na or nan
     df["Phone_Number"] = df["Phone_Number"].str.replace('nan--', '')
     df["Phone_Number"] = df["Phone_Number"].str.replace('Na--', '')
 
     # Here we split the address at every comma and create new columns for Street Address, State, and Zip Code
-    df[["Street Address", "State", "Zip Code"]] = df["Address"].str.split(',', expand=True)
+    df[["Street Address", "State", "Zip Code"]
+       ] = df["Address"].str.split(',', expand=True)
 
     # Standardizing the Paying Customer Column
     df["Paying Customer"] = df["Paying Customer"].str.replace('Yes', 'Y')
@@ -71,10 +74,20 @@ def transform_data(df):
 
 
 def load_data(df):
+    # Loading clean DataFrame
+    df.to_excel('./dataset/CLEAN_customer_call_list.xlsx',
+                sheet_name='Clean_Sheet', index=False)
     # Printing the cleaned and transformed DataFrame
     print(df)
 
 
+print('\n**************************')
+print('ETL Process Started')
+print('**************************\n')
+
 dataframe = extract_data('./dataset/customer_call_list.xlsx')
 dataframe = transform_data(dataframe)
 load_data(dataframe)
+print('\n********************************************************************************************************')
+print('ETL Process Complete, open dataset/CLEAN_customer_call_list.xlsx to see the cleaned data....')
+print('********************************************************************************************************\n')
