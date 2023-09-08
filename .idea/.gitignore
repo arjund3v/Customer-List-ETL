@@ -1,3 +1,49 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# Python virtual environment
+venv/
+
+# Compiled Python files
+__pycache__/
+*.py[cod]
+
+# Dependency and package management files
+*.lock
+.Python
+
+# Log files
+*.log
+
+# Temporary and cache files
+__pycache__/
+.cache/
+.tmp/
+
+# IDE and editor specific files
+.idea/
+.vscode/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Compiled Python files and caches
+*.pyc
+*.pyo
+__pycache__/
+
+# Local development files
+.env
+
+# User-specific files
+*.swp
+
+# Output and generated files
+*.out
+*.zip
+*.gz
+*.tar
+*.tar.gz
+
+# Ignore any other non-essential files or directories specific to your project
